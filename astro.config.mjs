@@ -1,4 +1,3 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
@@ -6,21 +5,34 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'Anti desk handbook',
+			social: [
+				{
+					label: 'Instagram',
+					href: 'https://www.instagram.com/bellamkonda.ff/',
+					icon: 'instagram'
+				},
+				{
+					label: 'GitHub',
+				    href: 'https://github.com/Abhi-AIX/anti-desk-protocol.git',
+					icon: 'github'
+				}
+			],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: 'Start Here',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
+						{ label: 'Introduction', link: '/intro' },
 					],
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
+        // CHANGE THIS LINE BELOW:
+        label: 'Body Maintenance', // <--- This is what the user sees
+        autogenerate: { directory: 'patches' }, // <--- This is where the files live
+                },
 			],
 		}),
 	],
+
 });
+

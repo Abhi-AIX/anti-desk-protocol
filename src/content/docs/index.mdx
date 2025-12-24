@@ -1,40 +1,52 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
+# This will be the BIG text in the middle of the screen
+title: Fix Your Desk Body
+
+# This helps Google find your site (SEO)
+description: Practical fixes for the office-worker body.
+
+template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  # This acts as the sub-headline
+  tagline: Simple daily routines to fix back pain, stiff necks, and bad posture.
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/Desk.png
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: Start Reading
+      link: /intro
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+      variant: primary
+    - text: Follow on Instagram
+      link: https://www.instagram.com/bellamkonda.ff/
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, LinkCard, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+<div class="hero-bg">
+:::note[The Reality]
+**Your body was not built to sit for 8 hours.**
+If you feel stiffness in your neck, lower back pain, or afternoon energy crashes, it's not "aging." It's a system error. These docs show you how to fix it.
+:::
+</div>
+
+
+## The Toolkit
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>
+	<LinkCard
+		title="Tech Neck Fix"
+		description="Instant relief for tech neck."
+		href="/patches/neck/tech-neck"
+		icon="warning"
+	/>
+	</CardGrid>
+	
+---
+
+### 🚀 How to use this site
+This is open-source documentation for your health.
+1.  Read the **[Introduction](/intro)** to understand the philosophy.
+2.  Pick a "Protocol" above that matches your pain.
+3.  Apply the fix immediately.
