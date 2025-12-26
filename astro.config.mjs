@@ -6,6 +6,9 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Anti desk handbook',
+			components: {
+				Header: './src/components/Header.astro',
+			},
 			social: [
 				{
 					label: 'Instagram',
@@ -18,21 +21,19 @@ export default defineConfig({
 					icon: 'github'
 				}
 			],
+			
 			sidebar: [
-				{
-					label: 'Start Here',
-					items: [
-						{ label: 'Introduction', link: '/intro' },
-					],
-				},
-				{
-        // CHANGE THIS LINE BELOW:
-        label: 'Body Maintenance', // <--- This is what the user sees
-        autogenerate: { directory: 'patches' }, // <--- This is where the files live
+                {
+                    label: 'Wellness Library',
+                    items: [
+                        { label: 'Stretches', autogenerate: { directory: 'patches/stretches' } },
+                        // You can add other categories here as you create them, for example:
+                        // { label: 'Exercise', autogenerate: { directory: 'patches/exercise' } },
+                    ],
                 },
-			],
-		}),
-	],
+            ],
+        }),
+    ],
 
 });
 

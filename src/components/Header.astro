@@ -1,0 +1,52 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Header.astro';
+
+const currentPath = Astro.url.pathname;
+const isDocPage = currentPath.startsWith('/patches/') || currentPath.startsWith('/docs/');
+---
+
+<Default {...Astro.props} />
+
+{isDocPage && (
+	<script>
+		// Add home button to social icons area
+		const socialIcons = document.querySelector('.social-icons');
+		if (socialIcons && !document.querySelector('.home-link-custom')) {
+			const homeLink = document.createElement('a');
+			homeLink.href = '/homepage';
+			homeLink.className = 'home-link-custom sl-flex';
+			homeLink.title = 'Back to Homepage';
+			homeLink.innerHTML = `
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+					<polyline points="9 22 9 12 15 12 15 22"></polyline>
+				</svg>
+				<span class="sr-only">Home</span>
+			`;
+			socialIcons.appendChild(homeLink);
+		}
+	</script>
+
+	<style is:global>
+		.home-link-custom {
+			color: var(--sl-color-text-accent) !important;
+			text-decoration: none !important;
+			display: inline-flex !important;
+			align-items: center !important;
+			padding: 0.5rem !important;
+			border-radius: 0.5rem !important;
+			transition: color 0.2s, background-color 0.2s !important;
+		}
+		
+		.home-link-custom:hover {
+			color: var(--sl-color-white) !important;
+			background-color: var(--sl-color-accent-high) !important;
+		}
+		
+		.home-link-custom svg {
+			width: 1.25rem !important;
+			height: 1.25rem !important;
+		}
+	</style>
+)}

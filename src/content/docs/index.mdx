@@ -1,19 +1,14 @@
 ---
-# This will be the BIG text in the middle of the screen
-title: Fix Your Desk Body
-
-# This helps Google find your site (SEO)
+title: Fuel your productivity
 description: Practical fixes for the office-worker body.
-
 template: splash
 hero:
-  # This acts as the sub-headline
   tagline: Simple daily routines to fix back pain, stiff necks, and bad posture.
   image:
     file: ../../assets/Desk.png
   actions:
     - text: Start Reading
-      link: /intro
+      link: /homepage
       icon: right-arrow
       variant: primary
     - text: Follow on Instagram
@@ -22,7 +17,8 @@ hero:
       variant: minimal
 ---
 
-import { Card, LinkCard, CardGrid } from '@astrojs/starlight/components';
+import { Card, LinkCard } from '@astrojs/starlight/components';
+import { categories } from '../../data/categories.js';
 
 <div class="hero-bg">
 :::note[The Reality]
@@ -31,22 +27,49 @@ If you feel stiffness in your neck, lower back pain, or afternoon energy crashes
 :::
 </div>
 
-
-## The Toolkit
-
-<CardGrid stagger>
-	<LinkCard
-		title="Tech Neck Fix"
-		description="Instant relief for tech neck."
-		href="/patches/neck/tech-neck"
-		icon="warning"
-	/>
-	</CardGrid>
-	
 ---
 
-### 🚀 How to use this site
-This is open-source documentation for your health.
-1.  Read the **[Introduction](/intro)** to understand the philosophy.
-2.  Pick a "Protocol" above that matches your pain.
-3.  Apply the fix immediately.
+## Wellness Library
+<style>{`
+.toolkit-category-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.toolkit-category-row > * {
+  flex: 1 1 220px;
+  max-width: 260px;
+}
+`}</style>
+
+<div class="toolkit-category-row">
+  {categories.map(category => (
+    <div class="category-card-wrapper" data-status={category.status}>
+      <LinkCard
+        title={category.title}
+        description={category.description}
+        href={category.href}
+        icon={category.icon}
+      />
+    </div>
+  ))}
+</div>
+
+<script is:inline>
+  {`
+  document.querySelectorAll('.category-card-wrapper[data-status="coming-soon"]').forEach(card => {
+    card.addEventListener('click', (event) => {
+      event.preventDefault();
+      alert('Coming soon!');
+    }, { capture: true });
+  });
+  `}
+</script>
+
+---
+
+:::caution[Disclaimer]
+This site is for informational purposes only and is not a substitute for professional medical advice. Consult a healthcare professional for any health concerns.
+:::
